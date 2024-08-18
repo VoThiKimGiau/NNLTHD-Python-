@@ -1,0 +1,26 @@
+﻿{% extends 'page/layout.html' %}
+
+{% block title %}Xóa hóa đơn{% endblock %}
+
+{% block content %}
+<h2 class="text-center text-danger">Xóa hóa đơn</h2>
+
+<div class="card mb-4 mt-5 w-25 m-auto">
+    <div class="card-header bg-danger text-white">
+        Mã hóa đơn: {{ hoa_don.MaHoaDon }}
+    </div>
+    <div class="card-body">
+        <p>Tên nhân viên: {{ hoa_don.MaNhanVien.HoTen }}</p>
+        <p>Tên khách hàng: {{ hoa_don.MaKhachHang.TenKhachHang }}</p>
+        <p>Ngày xuất hóa đơn: {{ hoa_don.NgayXuat|date:'d/m/Y H:i:s'}}</p>
+        <p>Tổng tiền: {{ hoa_don.TongTienFormatted }}</p>
+    </div>
+</div>
+
+<form method="post">
+    {% csrf_token %}
+    <p class="text-center">Bạn có chắc muốn xóa hóa đơn này?</p>
+    <button class="btn btn-outline-danger" style="margin-left:45%" type="submit">Xóa</button>
+    <a href="{% url 'HoaDonAdmin' %}" class="btn btn-outline-primary ms-4">Hủy</a>
+</form>
+{% endblock %}

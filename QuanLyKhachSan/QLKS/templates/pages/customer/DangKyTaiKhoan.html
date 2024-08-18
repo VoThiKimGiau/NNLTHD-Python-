@@ -1,0 +1,94 @@
+﻿{% extends "page/layout_user.html" %}
+
+{% block title %}Đăng ký tài khoản{% endblock %}
+
+{% block content %}
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        function toggleFields() {
+            var role = $('#role').val();
+            if (role === 'admin') {
+                $('#manv-field').show();
+                $('#makh-field').hide();
+            } else if (role === 'customer') {
+                $('#manv-field').hide();
+                $('#makh-field').show();
+            } else {
+                $('#manv-field').hide();
+                $('#makh-field').hide();
+            }
+        }
+
+        toggleFields();
+
+        $('#role').change(function () {
+            toggleFields();
+        });
+    });
+</script>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="text-center">Đăng ký tài khoản</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="tentk">Tên tài khoản:</label>
+                            <input type="text" class="form-control" id="tentk" name="tentk" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Tên người dùng:</label>
+                            <input type="text" class="form-control" id="username" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Mật khẩu:</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm_password">Xác nhận mật khẩu:</label>
+                            <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Vai trò:</label>
+                            <select class="form-control" id="role" name="role" required>
+                                <option value="">Chọn vai trò</option>
+                                <option value="admin">Admin</option>
+                                <option value="customer">Customer</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="manv-field" style="display: none;">
+                            <label for="manv">Mã nhân viên:</label>
+                            <select class="form-control" id="manv" name="manv">
+                                <option value="">Chọn mã nhân viên</option>
+                                {% for nhanvien in nhanviens %}
+                                <option value="{{ nhanvien.MaNhanVien }}">{{ nhanvien.HoTen }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group" id="makh-field" style="display: none;">
+                            <label for="makh">Mã khách hàng:</label>
+                            <select class="form-control" id="makh" name="makh">
+                                <option value="">Chọn mã khách hàng</option>
+                                {% for khachhang in khachhangs %}
+                                <option value="{{ khachhang.MaKhachHang }}">{{ khachhang.TenKhachHang }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Đăng ký</button>
+                    </form>
+                    {% if messages %}
+                    {% for message in messages %}
+                    <p class="text-danger mt-3">{{ message }}</p>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

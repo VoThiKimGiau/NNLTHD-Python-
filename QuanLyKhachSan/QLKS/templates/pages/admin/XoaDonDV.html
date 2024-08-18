@@ -1,0 +1,13 @@
+{% extends "page/layout.html" %}
+{% block title %}
+Xóa đơn dịch vụ
+{% endblock %}
+{% block content %}
+<h1>Xóa dịch vụ</h1>
+<p>Bạn có chắc chắn muốn xóa đơn dịch vụ <strong>{{ DM_dondv.MaDonDatDichVu }}</strong>?</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit" class="btn btn-danger">Xác nhận xóa</button>
+  <a href="{% url 'dsddv1' %}" class="btn btn-secondary">Hủy</a>
+</form>
+{% endblock %}

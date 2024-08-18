@@ -1,0 +1,45 @@
+﻿{% extends "page/layout_user.html" %}
+{% block title %}
+Hóa đơn
+{% endblock %}
+{% block content %}
+{% for hoa_don_data in hoa_don_data %}
+<h2 class="text-center text-danger mt-5">Hóa đơn</h2>
+<p>Nhân viên: {{ nhan_vien.HoTen }}</p>
+<p>Khách hàng: {{ khach_hang.TenKhachHang }}</p>
+<p>Ngày xuất: {{ hoa_don_data.hoa_don.NgayXuat|date:'d/m/Y H:i:s' }}</p>
+<h4>Chi tiết</h4>
+<table class="w-75 m-auto table table-bordered mb-5">
+    <tr>
+        <th>Số phòng</th>
+        <th>Ngày nhận phòng</th>
+        <th>Ngày trả phòng</th>
+        <th>Tiền phòng</th>
+    </tr>
+    {% for dp in hoa_don_data.ds_DP %}
+    <tr>
+        <td>{{ dp.SoPhong.SoPhong }}</td>
+        <td>{{ dp.NgayNhanPhong|date:'d/m/Y H:i' }}</td>
+        <td>{{ dp.NgayTraPhong|date:'d/m/Y H:i' }}</td>
+        <td>{{ dp.TongTienPhongFormatted }}</td>
+    </tr>
+    {% endfor %}
+    <tr>
+        <th style="width:18%"></th>
+        <th style="width:32%">Tên dịch vụ</th>
+        <th style="width:30%">Số lượng</th>
+        <th>Đơn giá</th>
+    </tr>
+    {% for dv in hoa_don_data.ds_DV %}
+    <tr>
+        <td></td>
+        <td>{{ dv.MaDichVu.TenDichVu }}</td>
+        <td>{{ dv.SoLuong }}</td>
+        <td>{{ dv.GiaFormatted }}</td>
+    </tr>
+    {% endfor %}
+    <td colspan="3" class="text-center fw-bold text-danger">Tổng tiền:</td>
+    <td class="text-danger fw-bold">{{ hoa_don_data.hoa_don.TongTienFormatted }}</td>
+</table>
+{% endfor %}
+{% endblock %}

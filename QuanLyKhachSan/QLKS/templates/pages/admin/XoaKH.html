@@ -1,0 +1,13 @@
+{% extends "page/layout.html" %}
+{% block title %}
+Xóa khách hàng
+{% endblock %}
+{% block content %}
+<h1>Xóa Khách Hàng</h1>
+<p>Bạn có chắc chắn muốn xóa khách hàng <strong>{{ DM_khachhang.TenKhachHang }}</strong>?</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit" class="btn btn-danger">Xác nhận xóa</button>
+  <a href="{% url 'dskh1' %}" class="btn btn-secondary">Hủy</a>
+</form>
+{% endblock %}

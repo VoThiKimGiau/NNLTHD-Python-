@@ -1,0 +1,18 @@
+{% extends "page/layout1.html" %}
+{% block title %}
+Sửa loại phòng 
+{% endblock %}
+{% block content %}
+
+<h2 class="w-100 p-3 text-danger">
+    Sửa loại phòng
+</h2>
+<form method="POST">
+    {% csrf_token %}
+
+        {{ form.as_p }}
+        <input type="submit" value="Sửa loại phòng" />
+        <a href="{% url 'loaiphong' %}"></a><button class="btn btn-danger">Quay lại  </button></a>
+    
+</form>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "page/layout1.html" %}
+{% block title %}
+Loại Phòng
+{% endblock %}
+{% block content %}
+<table class="table w-75">
+    <p class="text-end">
+        <a href="{% url 'themlp' %}" class="btn btn-success" style="margin-right:13%">Thêm loại phòng</a>
+    </p>
+    <thead>
+        <tr>
+            <td class="bg-secondary">Mã loại phòng</td>
+            <td class="bg-secondary">Tên loại phòng</td>
+            <td class="bg-secondary">Sức chứa</td>
+            <td class="bg-secondary">Giá 1 ngày</td>
+        </tr>
+    </thead>
+
+    {% for lp in DM_loaiphong %}
+    <tr>
+        <td>{{ lp.MaLoai }}</td>
+        <td>{{ lp.TenLoai }}</td>
+        <td>{{ lp.SucChua}}</td>
+        <td>{{ lp.GiaMotNgay}}</td>
+        <td>
+
+            <a href="/QLKS/xoalp/{{lp.MaLoai}}"><button type="submit" class="btn btn-danger">Xóa</button></a>
+            <a href="/QLKS/sualp/{{lp.MaLoai}}"><button type="submit" class="btn btn-primary">Sửa</button></a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

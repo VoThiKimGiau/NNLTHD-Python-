@@ -1,0 +1,17 @@
+﻿{% extends "page/layout1.html" %}
+
+{% block title %}Xóa nhân viên{% endblock %}
+
+{% block content %}
+<h2 class="w-100 text-center p-3 text-danger">Xóa nhân viên</h2>
+<div class="w-100 text-center ">
+    <p>Bạn chăc chắn muốn xóa nhân viên "{{ nhanvien.HoTen }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-outline-primary ms-4">Xác nhận</button>
+        <a class="btn btn-outline-danger ms-4" href="/QLKS/dsnv">Hủy</a>
+</div>
+
+</form>
+{% endblock %}

@@ -1,0 +1,70 @@
+﻿{% extends "page/layout1.html" %}
+{% block title %}
+Quản lý tài khoản
+{% endblock %}
+{% block content %}
+<h3 class="text-danger text-center">Tài khoản</h3>
+<!-- Search form -->
+<form method="GET" action="{% url 'account_search' %}" class="text-end" style="margin-left:41%; margin-top: 25px;">
+    <input type="text" name="q" placeholder="Search accounts..." value="{{ request.GET.q }}">
+    <button type="submit">Search</button>
+</form>
+<p class="text-end">
+    <a href="{% url 'ThemTaiKhoan' %}" class="text-decoration-none" style="margin-right:13%">Thêm tài khoản</a>
+</p>
+<table class="table w-100">
+    <thead>
+        <tr>
+            <td class="bg-secondary">ID</td>
+            <td class="bg-secondary">Tên chủ tài khoản</td>
+            <td class="bg-secondary">Username</td>
+            <td class="bg-secondary">Password</td>
+            <td class="bg-secondary">Role</td>
+            <td class="bg-secondary">Activies</td>
+
+        </tr>
+    </thead>
+
+    {% for acc in Lst_Account %}
+    <tr>
+        <td>
+            <!--{% for nv in Lst_Employee %}
+            {% if nv.MaNhanVien == acc.manv.MaNhanVien %}
+            {{nv.MaNhanVien}}
+            {% endif %}
+            {% endfor %}
+
+            {% for kh in Lst_Customer %}
+            {% if kh.MaKhachHang == acc.makh.MaKhachHang %}
+            {{kh.MaKhachHang}}
+            {% endif %}
+            {% endfor %}-->
+            {{ acc.id}}
+        </td>
+        <td>
+
+            <!--{% for nv in Lst_Employee %}
+            {% if nv.MaNhanVien == acc.manv.MaNhanVien %}
+            {{nv.HoTen}}
+            {% endif %}
+            {% endfor %}
+
+            {% for kh in Lst_Customer %}
+            {% if kh.MaKhachHang == acc.makh.MaKhachHang %}
+            {{kh.TenKhachHang}}
+            {% endif %}
+            {% endfor %}-->
+            {{ acc.tentk}}
+        </td>
+        <td>{{ acc.username}}</td>
+        <td>{{ acc.password}}</td>
+        <td>{{ acc.role}}</td>
+        <td>
+            <a href="/QLKS/SuaTaiKhoan/{{ acc.id }}" class="text-decoration-none">Sửa</a> |
+            <a href="/QLKS/XoaTaiKhoan/{{ acc.id }}" class="text-decoration-none">Xóa</a>
+        </td>
+
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

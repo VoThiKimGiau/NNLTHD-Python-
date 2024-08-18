@@ -1,0 +1,37 @@
+{% extends "page/layout.html" %}
+{% block title %}
+Đơn dịch vụ
+{% endblock %}
+{% block content %}
+
+<h2 class="w-100 p-3 text-danger">
+    Thêm đơn dịch vụ
+</h2>
+<form action="/QLKS/themddv" method="POST">
+    {% csrf_token %}
+    <div class="form-row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Mã đơn đặt phòng:  </label>
+                {{form.MaDonDatPhong}}
+            </div>
+            <div class="form-group">
+                <label>Tên dịch vụ:  </label>
+                {{form.MaDichVu}}
+            </div>
+            <div class="form-group">
+                <label>Số lượng:  </label>
+                {{form.SoLuong}}
+            </div>
+            <div class="form-group">
+                <label>Ngày đặt:  </label>
+                {{form.NgayDat}}
+            </div>
+        </div>
+        
+        <input type="submit" value="Thêm dịch vụ" />
+        
+    </div>
+</form>
+<a href="/QLKS/dsddv1"><button class="btn btn-danger">Quay lại </button></a>
+{% endblock %}

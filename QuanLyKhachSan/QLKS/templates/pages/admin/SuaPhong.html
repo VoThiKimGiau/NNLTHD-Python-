@@ -1,0 +1,18 @@
+{% extends "page/layout1.html" %}
+{% block title %}
+Sửa phòng 
+{% endblock %}
+{% block content %}
+
+<h2 class="w-100 p-3 text-danger">
+    Sửa phòng
+</h2>
+<form method="POST">
+    {% csrf_token %}
+
+        {{ form.as_p }}
+        <input type="submit" value="Sửa phòng" />
+        <a href="{% url 'phong' %}"></a><button class="btn btn-danger">Quay lại  </button></a>
+    
+</form>
+{% endblock %}

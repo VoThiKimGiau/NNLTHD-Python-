@@ -1,0 +1,18 @@
+﻿{% extends "page/layout.html" %}
+
+{% block title %}Thêm hóa đơn{% endblock %}
+
+{% block content %}
+<h2 class="w-100 text-center p-3 text-danger">Thêm hóa đơn</h2>
+<div class="card w-25 m-auto" >
+    <div class="card-body">
+        <form action="/QLKS/ThemHoaDon" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button class="btn btn-outline-primary ms-4" type="submit">Thêm hóa đơn</button>
+            <a href="{% url 'HoaDonAdmin' %}" class="btn btn-outline-danger ms-4">Hủy</a>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

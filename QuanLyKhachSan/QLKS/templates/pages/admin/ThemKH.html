@@ -1,0 +1,39 @@
+{% extends "page/layout.html" %}
+{% block title %}
+Khách hàng
+{% endblock %}
+{% block content %}
+
+<h2 class="w-100 p-3 text-danger">
+    Thêm sản phẩm
+</h2>
+<form action="/QLKS/themkh" method="POST">
+    {% csrf_token %}
+    <div class="form-row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Tên khách hàng:  </label>
+                {{form.TenKhachHang}}
+            </div>
+            
+            <div class="form-group">
+                <label>Số điện thoại: </label>
+                {{form.SDT}}
+            </div>
+            <div class="form-group">
+                <label>Email: </label>
+                {{form.Email}}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Địa chỉ: </label>
+                {{form.DiaChi}}
+            </div>
+        </div>
+        <input type="submit" value="Thêm khách hàng" />
+        
+    </div>
+</form>
+<a href="/QLKS/dskh1"><button class="btn btn-danger">Quay lại </button></a>
+{% endblock %}

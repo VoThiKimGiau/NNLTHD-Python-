@@ -1,0 +1,42 @@
+﻿{% extends "page/layout1.html" %}
+
+{% block title %}Thêm tài khoản{% endblock %}
+
+{% block content %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const roleField = document.getElementById('id_role');
+        const manvField = document.getElementById('id_nhanVien').parentElement;
+        const makhField = document.getElementById('id_khachHang').parentElement;
+
+        function toggleFields() {
+            if (roleField.value === 'admin') {
+                manvField.style.display = 'block';
+                makhField.style.display = 'none';
+            } else if (roleField.value === 'customer') {
+                manvField.style.display = 'none';
+                makhField.style.display = 'block';
+            } else {
+                manvField.style.display = 'none';
+                makhField.style.display = 'none';
+            }
+        }
+
+        roleField.addEventListener('change', toggleFields);
+        toggleFields();  // Initial call to set correct display on page load
+    });
+</script>
+<h2 class="w-100 text-center p-3 text-danger">Thêm tài khoản</h2>
+<div class="card w-50 m-auto">
+    <div class="card-body">
+        <form action="/QLKS/ThemTaiKhoan" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button class="btn btn-outline-primary ms-4" type="submit" >Thêm tài khoản</button>
+            <a  href="/QLKS/account" class="btn btn-outline-danger ms-4">Hủy</a>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

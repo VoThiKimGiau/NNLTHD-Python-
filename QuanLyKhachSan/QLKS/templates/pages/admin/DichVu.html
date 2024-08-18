@@ -1,0 +1,32 @@
+{% extends "page/layout1.html" %}
+{% block title %}
+Dịch vụ
+{% endblock %}
+{% block content %}
+<table class="table w-75">
+    <thead>
+        <tr>
+            <td class="bg-secondary">Mã dịch vụ</td>
+            <td class="bg-secondary">Tên tên dịch vụ</td>
+            <td class="bg-secondary">Giá</td>
+            <td class="bg-secondary">Mô tả</td>
+            <td class="bg-secondary"></td>
+        </tr>
+    </thead>
+
+    {% for lp in DM_dichvu %}
+    <tr>
+        <td>{{ lp.MaDichVu }}</td>
+        <td>{{ lp.TenDichVu }}</td>
+        <td>{{ lp.Gia}}</td>
+        <td>{{ lp.MoTa}}</td>
+        <td>
+            <a href="/QLKS/xoadv/{{lp.MaDichVu}}"><button type="submit" class="btn btn-danger">Xóa</button></a>
+            <a href="/QLKS/suadv/{{lp.MaDichVu}}"><button type="submit" class="btn btn-primary">Sửa</button></a>
+
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<button type="submit" class="btn btn-secondary"><a href="/QLKS/themdv">Thêm dịch vụ mới</a></button>
+{% endblock %}

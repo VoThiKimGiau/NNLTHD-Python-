@@ -1,0 +1,42 @@
+﻿{% extends "page/layout1.html" %}
+{% block title %}
+Quản lý nhân viên
+{% endblock %}
+{% block content %}
+<h3 class="text-danger text-center">Nhân viên</h3>
+<form method="GET" action="{% url 'nhanvien_search' %}" class="text-end" style="margin-left:41%; margin-top: 25px;">
+    <input type="text" name="q" placeholder="Search employees..." value="{{ request.GET.q }}">
+    <button type="submit">Search</button>
+</form>
+<p class="text-end">
+    <a href="{% url 'ThemNhanVien' %}" class="text-decoration-none" style="margin-right:13%">Thêm nhân viên</a>
+</p>
+<table class="table w-100">
+    <thead>
+        <tr>
+            <td class="bg-secondary">Mã nhân viên</td>
+            <td class="bg-secondary">Tên nhân viên</td>
+            <td class="bg-secondary">Số điện thoại</td>
+            <td class="bg-secondary">Email</td>
+            <td class="bg-secondary">Ngày vào làm</td>
+            <td class="bg-secondary">Chức vụ</td>
+            <td class="bg-secondary">Activies</td>
+        </tr>
+    </thead>
+
+    {% for nv in Lst_Employee %}
+    <tr>
+        <td>{{ nv.MaNhanVien }}</td>
+        <td>{{ nv.HoTen }}</td>
+        <td>{{ nv.SDT}}</td>
+        <td>{{ nv.Email}}</td>
+        <td>{{ nv.NgayVaoLam}}</td>
+        <td>{{ nv.ChucVu}}</td>
+        <td>
+            <a href="/QLKS/SuaNhanVien/{{ nv.MaNhanVien }}" class="text-decoration-none">Sửa</a> |
+            <a href="/QLKS/XoaNhanVien/{{ nv.MaNhanVien }}" class="text-decoration-none">Xóa</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

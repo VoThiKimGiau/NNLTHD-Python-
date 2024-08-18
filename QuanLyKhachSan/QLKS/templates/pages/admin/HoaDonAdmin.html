@@ -1,0 +1,41 @@
+﻿{% extends "page/layout1.html" %}
+
+{% block title %}
+Hóa đơn admin
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <h3 class="text-danger text-center">Hóa đơn</h3>
+    <p class="text-end">
+        <a href="{% url 'ThemHoaDon' %}" class="text-decoration-none" style="margin-right:13%">Thêm hóa đơn</a>
+    </p>
+
+    <table class="table w-75 m-auto mt-3">
+        <thead>
+            <tr class="table-danger">
+                <td>Mã hóa đơn</td>
+                <td>Tên nhân viên</td>
+                <td>Tên khách hàng</td>
+                <td>Ngày xuất hóa đơn</td>
+                <td>Tổng tiền</td>
+                <td>Activies</td>
+            </tr>
+        </thead>
+
+        {% for hd in ds_HD %}
+        <tr>
+            <td>{{ hd.MaHoaDon }}</td>
+            <td>{{ hd.MaNhanVien.HoTen }}</td>
+            <td>{{ hd.MaKhachHang.TenKhachHang }}</td>
+            <td>{{ hd.NgayXuat|date:'d/m/Y H:i:s' }}</td>
+            <td>{{ hd.TongTienFormatted }}</td>
+            <td>
+                <a href="/QLKS/SuaHoaDon/{{ hd.MaHoaDon }}" class="text-decoration-none">Sửa</a> |
+                <a href="/QLKS/XoaHoaDon/{{ hd.MaHoaDon }}" class="text-decoration-none">Xóa</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

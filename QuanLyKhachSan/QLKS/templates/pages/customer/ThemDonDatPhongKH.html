@@ -1,0 +1,45 @@
+﻿{% extends 'page/layout.html' %}
+
+{% block title %}Đơn đặt phòng{% endblock %}
+
+{% block content %}
+<h2 class="text-center text-danger">Đơn đặt phòng</h2>
+
+<div class="card mb-4 mt-5 w-25 m-auto">
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            <div>
+                <input class="form-control d-none" id="MaHoaDon" name="MaHoaDon" value="{{hoa_don.MaHoaDon}}" readonly/>
+            </div>
+            <div>
+                <input class="form-control d-none" id="SoPhong" name="SoPhong" value="{{phong.SoPhong}}" readonly/>
+            </div>
+            <div>
+                <label for="NgayNhanPhong">Ngày nhận phòng:</label>
+                <input class="form-control" type="datetime" id="NgayNhanPhong" name="NgayNhanPhong" value="{{ don_dat_phong.NgayNhanPhong|date:'d/m/Y H:i' }}">
+            </div>
+            <div>
+                <label for="NgayTraPhong">Ngày trả phòng:</label>
+                <input class="form-control" type="datetime" id="NgayTraPhong" name="NgayTraPhong" value="{{ don_dat_phong.NgayTraPhong|date:'d/m/Y H:i' }}">
+            </div>
+            <div>
+                <label for="TinhTrang">Tình trạng:</label>
+                <input class="form-control" id="TinhTrang" name="TinhTrang" value="Đang sử dụng" readonly/>
+            </div>
+            <div>
+                <label for="TongTienPhong">Tổng tiền phòng:</label>
+                <span id="TongTienPhong">{{ don_dat_phong.TongTienPhongFormatted }}</span>
+            </div>
+            <div>
+                <label for="TongTienDichVu">Tổng tiền dịch vụ:</label>
+                <span id="TongTienDichVu">{{ don_dat_phong.TongTienDichVuFormatted }}</span>
+            </div>
+            <div class="mt-3 text-center">
+                <button type="submit" class="btn btn-outline-success">Lưu</button>
+                <a class="btn btn-outline-danger ms-3" href="{% url 'home' %}">Hủy</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+﻿{% extends "page/layout.html" %}
+
+{% block title %}
+    Đăng nhập tài khoản
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Đăng nhập</div>
+
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="username">Tên đăng nhập:</label>
+                            <input type="text" class="form-control" id="username1" name="username1" required>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 30px;">
+                            <label for="password">Mật khẩu:</label>
+                            <input type="password" class="form-control" id="password1" name="password1" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Đăng nhập</button>
+
+                        <a href="/QLKS/register" class="btn btn-primary ms-3">Đăng ký</a>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if messages %}
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-6">
+            <div class="alert alert-danger" role="alert">
+                <ul>
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

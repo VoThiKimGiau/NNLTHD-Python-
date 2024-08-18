@@ -1,0 +1,38 @@
+{% extends "page/layout1.html" %}
+
+{% block title %}
+Danh sách phòng Admin
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <h3 class="text-danger text-center">Danh sách các phòng</h3>
+    <p class="text-end">
+        <a href="{% url 'themPH' %}" class="btn btn-success" style="margin-right:13%">Thêm phòng</a>
+    </p>
+
+    <table class="table w-75 m-auto mt-3">
+        <thead>
+            <tr class="table-danger">
+                <td>Mã loại</td>
+                <td>Số phòng</td>
+                <td>Tình trạng</td>
+                <td>Hình ảnh</td>
+            </tr>
+        </thead>
+
+        {% for p in DM_phong %}
+        <tr>
+            <td>{{ p.MaLoai.MaLoai }}</td>
+            <td>{{ p.SoPhong }}</td>
+            <td>{{ p.TinhTrang }}</td>
+            <td><img src="/static/images/{{p.HinhAnh}}" class="card-img-top h-25 w-25" alt="..."></td>
+            <td>
+                <a href="/QLKS/suaPH/{{ p.SoPhong }}" class="btn btn-primary">Sửa</a> |
+                <a href="/QLKS/xoaPH/{{ p.SoPhong }}" class="btn btn-danger">Xóa</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

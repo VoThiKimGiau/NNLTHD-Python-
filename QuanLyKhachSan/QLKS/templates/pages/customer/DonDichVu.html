@@ -1,0 +1,13 @@
+{% extends "page/layout_user.html" %}
+
+{% block content %}
+<h1>Thêm đơn đặt dịch vụ</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Lưu</button>
+</form>
+
+<a href="{% url 'danh_sach_don_dat_dich_vu' don_dat_phong_id=don_dat_phong.id %}" class="btn btn-secondary">Hủy</a>
+{% endblock %}

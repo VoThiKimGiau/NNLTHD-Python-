@@ -1,0 +1,35 @@
+{% extends "page/layout1.html" %}
+{% block title %}
+Đơn dịch vụ
+{% endblock %}
+{% block content %}
+<table class="table w-75">
+    <thead>
+        <tr>
+            <td class="bg-secondary">Mã đơn dịch vụ</td>
+            <td class="bg-secondary">Mã đơn đặt phòng</td>
+            <td class="bg-secondary">Dịch vụ</td>
+            <td class="bg-secondary">Số lượng</td>
+            <td class="bg-secondary">Ngày đặt</td>
+            <td class="bg-secondary">Tổng tiền</td>
+            <td class="bg-secondary"></td>
+        </tr>
+    </thead>
+
+    {% for lp in DM_dondv %}
+    <tr>
+        <td>{{ lp.MaDonDatDichVu }}</td>
+        <td>{{ lp.MaDonDatPhong_id }}</td>
+        <td>{{ lp.MaDichVu.TenDichVu}}</td>
+        <td>{{ lp.SoLuong}}</td>
+        <td>{{ lp.NgayDat}}</td>
+        <td>{{ lp.TongTien}}</td>
+        <td>
+            <a href="/QLKS/xoaddv/{{lp.MaDonDatDichVu}}"><button type="submit" class="btn btn-danger">Xóa</button></a>
+            <a href="/QLKS/suaddv/{{lp.MaDonDatDichVu}}"><button type="submit" class="btn btn-primary">Sửa</button></a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<button type="submit" class="btn btn-secondary"><a href="/QLKS/themddv">Thêm đơn dịch vụ mới</a></button>
+{% endblock %}

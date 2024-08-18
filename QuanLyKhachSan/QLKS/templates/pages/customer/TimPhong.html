@@ -1,0 +1,14 @@
+﻿{% extends "page/layout_user.html" %}
+{% block title %}
+Tìm phòng
+{% endblock %}
+{% block content %}
+<h2 class="w-100 p-3 text-danger text-center">Tìm kiếm</h2>
+<form acction="/QLKS/Search" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Tìm kiếm">
+</form>
+
+
+{% endblock %}

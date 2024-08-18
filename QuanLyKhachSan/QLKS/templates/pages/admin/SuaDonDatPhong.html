@@ -1,0 +1,69 @@
+﻿{% extends 'page/layout.html' %}
+
+{% block title %}Sửa đơn đặt phòng{% endblock %}
+
+{% block content %}
+<h2 class="text-center text-danger">Sửa đơn đặt phòng</h2>
+
+<div class="card mb-4 mt-5 w-25 m-auto">
+    <div class="card-header bg-danger text-white">
+        Mã đơn đặt phòng: {{ don_dat_phong.MaDonDatHang }}
+    </div>
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            <div>
+                <label for="MaHoaDon">Mã hóa đơn:</label>
+                <select class="form-control" id="MaHoaDon" name="MaHoaDon">
+                    {% for hd in ds_HD %}
+                    {% if don_dat_phong.MaHoaDon.MaHoaDon == hd.MaHoaDon %}
+                    <option value="{{ hd.MaHoaDon }}" selected>{{ hd.MaHoaDon }}</option>
+                    {% else %}
+                    <option value="{{ hd.MaHoaDon }}">{{ hd.MaHoaDon }}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="SoPhong">Số phòng:</label>
+                <select class="form-control" id="SoPhong" name="SoPhong">
+                    {% for ph in ds_PH %}
+                    {% if don_dat_phong.SoPhong.SoPhong == ph.SoPhong %}
+                    <option value="{{ ph.SoPhong }}" selected>{{ ph.SoPhong }}</option>
+                    {% else %}
+                    <option value="{{ ph.SoPhong }}">{{ ph.SoPhong }}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="NgayNhanPhong">Ngày nhận phòng:</label>
+                <input class="form-control" type="datetime" id="NgayNhanPhong" name="NgayNhanPhong" value="{{ don_dat_phong.NgayNhanPhong|date:'d/m/Y H:i' }}">
+            </div>
+            <div>
+                <label for="NgayTraPhong">Ngày trả phòng:</label>
+                <input class="form-control" type="datetime" id="NgayTraPhong" name="NgayTraPhong" value="{{ don_dat_phong.NgayTraPhong|date:'d/m/Y H:i' }}">
+            </div>
+            <div>
+                <label for="TinhTrang">Tình trạng:</label>
+                <select class="form-control" id="TinhTrang" name="TinhTrang">
+                    <option value="Đang sử dụng" {% if don_dat_phong.TinhTrang == "Đang sử dụng" %}selected{% endif %}>Đang sử dụng</option>
+                    <option value="Đã thanh toán" {% if don_dat_phong.TinhTrang != "Đang sử dụng" %}selected{% endif %}>Đã thanh toán</option>
+                </select>
+            </div>
+            <div>
+                <label for="TongTienPhong">Tổng tiền phòng:</label>
+                <span id="TongTienPhong">{{ don_dat_phong.TongTienPhongFormatted }}</span>
+            </div>
+            <div>
+                <label for="TongTienDichVu">Tổng tiền dịch vụ:</label>
+                <span id="TongTienDichVu">{{ don_dat_phong.TongTienDichVuFormatted }}</span>
+            </div>
+            <div class="mt-3 text-center">
+                <button type="submit" class="btn btn-outline-success">Lưu</button>
+                <a class="btn btn-outline-danger ms-3" href="{% url 'DonDatPhongAdmin' %}">Hủy</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

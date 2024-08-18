@@ -1,0 +1,34 @@
+{% extends "page/layout1.html" %}
+{% block title %}
+Khách hàng
+{% endblock %}
+{% block content %}
+<table class="table w-75">
+    <thead>
+        <tr>
+            <td class="bg-secondary">Mã khách hàng</td>
+            <td class="bg-secondary">Tên khách hàng</td>
+            <td class="bg-secondary">Địa chỉ</td>
+            <td class="bg-secondary">Số điện thoại</td>
+            <td class="bg-secondary">Email</td>
+            <td class="bg-secondary"></td>
+        </tr>
+    </thead>
+
+    {% for lp in DM_khachhang %}
+    <tr>
+        <td>{{ lp.MaKhachHang }}</td>
+        <td>{{ lp.TenKhachHang }}</td>
+        <td>{{ lp.DiaChi}}</td>
+        <td>{{ lp.SDT}}</td>
+        <td>{{ lp.Email}}</td>
+        <td>
+
+            <a href="/QLKS/xoakh/{{lp.MaKhachHang}}"><button type="submit" class="btn btn-danger">Xóa</button></a>
+            <a href="/QLKS/suakh/{{lp.MaKhachHang}}"><button type="submit" class="btn btn-primary">Sửa</button></a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<button type="submit" class="btn btn-secondary"><a href="/QLKS/themkh">Thêm khách hàng mới</a></button>
+{% endblock %}

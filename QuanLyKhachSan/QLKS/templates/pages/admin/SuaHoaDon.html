@@ -1,0 +1,54 @@
+﻿{% extends 'page/layout.html' %}
+
+{% block title %}Sửa hóa đơn{% endblock %}
+
+{% block content %}
+<h2 class="text-center text-danger">Sửa hóa đơn</h2>
+
+<div class="card mb-4 mt-5 w-25 m-auto">
+    <div class="card-header bg-danger text-white">
+        Mã hóa đơn: {{ hoa_don.MaHoaDon }}
+    </div>
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            <div>
+                <label for="MaNhanVien">Nhân viên:</label>
+                <select class="form-control" id="MaNhanVien" name="MaNhanVien">
+                    {% for nv in ds_NV %}
+                    {% if hoa_don.MaNhanVien.MaNhanVien == nv.MaNhanVien %}
+                    <option value="{{ nv.MaNhanVien }}" selected>{{ nv.HoTen }}</option>
+                    {% else %}
+                    <option value="{{ nv.MaNhanVien }}">{{ nv.HoTen }}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="MaKhachHang">Khách hàng:</label>
+                <select class="form-control" id="MaKhachHang" name="MaKhachHang">
+                    {% for kh in ds_KH %}
+                    {% if hoa_don.MaKhachHang.MaKhachHang == kh.MaKhachHang %}
+                    <option value="{{ kh.MaKhachHang }}" selected>{{ kh.TenKhachHang }}</option>
+                    {% else %}
+                    <option value="{{ kh.MaKhachHang }}">{{ kh.TenKhachHang }}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="NgayXuat">Ngày xuất:</label>
+                <input class="form-control" type="datetime" id="NgayXuat" name="NgayXuat" value="{{ hoa_don.NgayXuat|date:'d/m/Y H:i:s' }}">
+            </div>
+            <div>
+                <label for="TongTien">Tổng tiền:</label>
+                <span id="TongTien">{{ hoa_don.TongTienFormatted }}</span>
+            </div>
+            <div class="mt-3 text-center">
+                <button type="submit" class="btn btn-outline-success">Lưu</button>
+                <a class="btn btn-outline-danger ms-3" href="{% url 'HoaDonAdmin' %}">Hủy</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

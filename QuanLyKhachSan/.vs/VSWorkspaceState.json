@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\QLKS",
+    "\\QLKS\\templates",
+    "\\QLKS\\templates\\page",
+    "\\QLKS\\templates\\pages",
+    "\\QLKS\\templates\\pages\\admin",
+    "\\QLKS\\templates\\pages\\customer",
+    "\\QuanLyKhachSan",
+    "\\static",
+    "\\static\\images"
+  ],
+  "SelectedNode": "\\QLKS\\templates\\page\\layout1.html",
+  "PreviewInSolutionExplorer": false
+}

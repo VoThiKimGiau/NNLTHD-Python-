@@ -1,0 +1,29 @@
+﻿{% extends 'page/layout.html' %}
+
+{% block title %}Xóa đơn đặt phòng{% endblock %}
+
+{% block content %}
+<h2 class="text-center text-danger">Xóa đơn đặt phòng</h2>
+
+<div class="card mb-4 mt-5 w-25 m-auto">
+    <div class="card-header bg-danger text-white">
+        Mã đơn đặt phòng: {{ don_dat_phong.MaDonDatPhong }}
+    </div>
+    <div class="card-body">
+        <p>Mã hóa đơn: {{ don_dat_phong.MaHoaDon.MaHoaDon }}</p>
+        <p>Số phòng: {{ don_dat_phong.SoPhong.SoPhong }}</p>
+        <p>Ngày nhận phòng: {{ don_dat_phong.NgayNhanPhong|date:'d/m/Y H:i'}}</p>
+        <p>Ngày trả phòng: {{ don_dat_phong.NgayTraPhong|date:'d/m/Y H:i'}}</p>
+        <p>Tổng tiền phòng: {{ don_dat_phong.TongTienPhongFormatted }}</p>
+        <p>Tổng tiền dịch vụ: {{ don_dat_phong.TongTienDichVuFormatted }}</p>
+        <p>Tình trạng: {{ don_dat_phong.TinhTrang }}</p>
+    </div>
+</div>
+
+<form method="post">
+    {% csrf_token %}
+    <p class="text-center">Bạn có chắc muốn xóa đơn đặt phòng này?</p>
+    <button class="btn btn-outline-danger" style="margin-left:45%" type="submit">Xóa</button>
+    <a href="{% url 'DonDatPhongAdmin' %}" class="btn btn-outline-primary ms-4">Hủy</a>
+</form>
+{% endblock %}

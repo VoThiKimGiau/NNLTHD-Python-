@@ -1,0 +1,13 @@
+{% extends "page/layout1.html" %}
+{% block title %}
+Xóa phòng
+{% endblock %}
+{% block content %}
+<h1>Xóa Loại Phòng</h1>
+<p>Bạn có chắc chắn muốn xóa loại phòng <strong>{{ DM_phong.SoPhong }}</strong>?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Xác nhận xóa</button>
+    <a href="{% url 'phong' %}" class="btn btn-secondary">Hủy</a>
+</form>
+{% endblock %}

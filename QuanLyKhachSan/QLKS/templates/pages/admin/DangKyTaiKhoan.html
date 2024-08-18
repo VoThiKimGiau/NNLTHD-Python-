@@ -1,0 +1,45 @@
+﻿{% extends "page/layout.html" %}
+
+{% block title %}Đăng ký tài khoản{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="text-center">Đăng ký tài khoản</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="tentk">Tên tài khoản:</label>
+                            <input type="text" class="form-control" id="tentk" name="tentk" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Tên đăng nhập:</label>
+                            <input type="text" class="form-control" id="username" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Mật khẩu:</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm_password">Xác nhận mật khẩu:</label>
+                            <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block mt-3">Đăng ký</button>
+                        <a class="btn btn-outline-danger btn-block mt-3 ms-3" href="/QLKS/">Hủy</a>
+                    </form>
+                    {% if messages %}
+                    {% for message in messages %}
+                    <p class="text-danger mt-3">{{ message }}</p>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
