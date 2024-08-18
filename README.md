@@ -18,9 +18,9 @@
 -----------------------------------------------
 # Dự án
 
-## Application quản lý nhà sách
+## Website quản lý khách sạn
 <h5>Mô tả dự án: </h5>
-<p>Ngành công nghiệp sách và xuất bản đóng vai trò quan trọng trong đời sống kinh tế và văn hóa của một quốc gia. Sự phát triển của công nghệ thông tin đã tạo ra nhu cầu áp dụng các công nghệ tin học và liên quan vào quản lý bán sách."Vì vậy, chúng tôi đã chọn đề tài 'Xây dựng hệ thống quản lý nhà sách' để đáp ứng nhu cầu thực tế trong công việc mua và bán sách việc tin học hoá quản lý sách giúp tăng cường hiệu quả công việc, tiết kiệm thời gian và nâng cao hiệu suất làm việc.</p>
+<p>Công nghệ đóng vai trò quan trọng trong việc quản lý khách sạn, mang lại nhiều lợi ích đáng kể. Tính đến từ việc tự động hóa quy trình đặt phòng, kiểm tra tình trạng phòng và thanh toán, công nghệ giúp tối ưu hóa hoạt động và giảm thiểu sai sót. Khách hàng cũng được hưởng lợi từ sự tiện lợi của việc đặt phòng trực tuyến và yêu cầu dịch vụ thông qua ứng dụng di động, tạo ra trải nghiệm người dùng tốt hơn. Đồng thời, công nghệ cung cấp dữ liệu phân tích chi tiết, giúp quản lý đưa ra quyết định dựa trên dữ liệu và dự báo hiệu quả. Sử dụng công nghệ không chỉ giúp nâng cao chất lượng dịch vụ mà còn tạo ra cơ hội mới cho sự phát triển và thành công của khách sạn.</p>
 
 ### Yêu cầu
 <p>Ngôn ngữ: Python</p>
