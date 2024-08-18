@@ -38,8 +38,8 @@
 
 ## Chức năng
 
-#### WEBSITE
-## Customer
+## WEBSITE
+### Customer
 
 <p>Tìm kiếm và hiển thị thông tin:</p>
 <ul>
@@ -66,7 +66,7 @@
   <li>Đăng ký, đăng nhập, đăng xuất tài khoản</li>
 </ul>
 
-## Admin
+### Admin
 
 <p>
   Phòng
